@@ -11,14 +11,11 @@
     <script src="js/jquery.cookie.js"></script>
     <script type="text/javascript">
       //(function () {
-        var favourites = [];
-        //var found = false;
-      
         function cb(data) {
             // use returned data
-            console.log(data);
+            //console.log(data);
       
-            console.log('length: ' + data.items.length);
+            //console.log('length: ' + data.items.length);
       
             for (var i =0; i<data.items.length; i++) {
                 var item = data.items[i];
@@ -39,20 +36,18 @@
             $('.image').on('click', function() {
                 $(this).toggleClass('selected');
                 $('.image').each(function(){
-                    var id = $(this).attr('data-id');
+                    var url = $(this).attr('src');
                     var selected = $(this).hasClass('selected');
-                    $.cookie(id, selected);
+                    $.cookie(url, selected);
                 });
             });
             $('.image').each(function(){
-                var id = $(this).attr('data-id');
-                var cookieValue = $.cookie(id); // => "value"
-                if (cookieValue == 'true')
-                    console.log('For image: '+id+'This cookie is: ' + cookieValue);
+                var url = $(this).attr('src');
+                var cookieValue = $.cookie(url); // => "value"
                 if (cookieValue == 'true') {
-                    console.log('IT WAS TRUE!');
+                    //console.log('IT WAS TRUE!');
                     $(this).addClass('selected');
-                    console.log($(this).hasClass('selected'));
+                    //console.log($(this).hasClass('selected'));
                 }
             });
         });

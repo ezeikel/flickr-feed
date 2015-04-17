@@ -8,4 +8,5 @@
     cursor: pointer; }
 
 .selected {
-  border: 2px dashed pink; }
+  opacity: 0.5;
+  background-image: url(../img/favourite.png); }
