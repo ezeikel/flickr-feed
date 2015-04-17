@@ -28,6 +28,7 @@ gulp.task('templates', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('sass/*.sass', ['sass']);
+    gulp.watch('./*.jade', ['templates']);
 });
 
 

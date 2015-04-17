@@ -1,14 +1,65 @@
 doctype html
 html
     head
+        link(href='css/main.css',rel='stylesheet')
+    body
+        h1 Flickr Viewer
+        hr
+        #imagecontainer
+        script(src='js/jquery-1.11.2.min.js')
+        script(src='js/jquery.cookie.js')
         script(type='text/javascript').
-            (function () {
-                function cb(data) {
-                    // use returned data
+          //(function () {
+            var favourites = [];
+            //var found = false;
+
+            function cb(data) {
+                // use returned data
+                console.log(data);
+
+                console.log('length: ' + data.items.length);
+
+                for (var i =0; i<data.items.length; i++) {
+                    var item = data.items[i];
+                    var img = document.createElement('img');
+                    var imgurl = item.media.m;
+                    img.setAttribute("src", ""+imgurl);
+                    img.setAttribute("data-id", i);
+                    img.className = "image";
+
+                    //div.appendChild(title);
+                    //div.appendChild(img);
+                    var container = document.getElementById('imagecontainer');
+                    container.appendChild(img);
                 }
-                
-                var tags = 'london';
-                var script = document.createElement('script');
-                script.src =  'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags;
-                document.head.appendChild(script);
-                })();
+            }
+
+            $(window).load(function(){
+                $('.image').on('click', function() {
+                    $(this).toggleClass('selected');
+                    $('.image').each(function(){
+                        var id = $(this).attr('data-id');
+                        var selected = $(this).hasClass('selected');
+                        $.cookie(id, selected);
+                    });
+                });
+                $('.image').each(function(){
+                    var id = $(this).attr('data-id');
+                    var cookieValue = $.cookie(id); // => "value"
+                    if (cookieValue == 'true')
+                        console.log('For image: '+id+'This cookie is: ' + cookieValue);
+                    if (cookieValue == 'true') {
+                        console.log('IT WAS TRUE!');
+                        $(this).addClass('selected');
+                        console.log($(this).hasClass('selected'));
+                    }
+                });
+            });
+
+            //cb({title:'hello'});
+
+              var tags = 'london';
+              var script = document.createElement('script');
+              script.src =  'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags;
+              document.head.appendChild(script);
+              //})();
