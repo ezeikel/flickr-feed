@@ -17,7 +17,15 @@ body {
 
 p {
   margin-top: 0;
+  margin-left: 10px;
   color: #666; }
 
 h1 {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-left: 10px; }
+
+.blue {
+  color: #0063dc; }
+
+.pink {
+  color: #ff0084; }
