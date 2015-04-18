@@ -10,10 +10,7 @@ $(window).load(function(){
     $('.image').each(function(){
         var url = $(this).attr('src');
         var cookieValue = $.cookie(url); // => "value"
-        if (cookieValue == 'true') {
-            //console.log('IT WAS TRUE!');
+        if (cookieValue == 'true')
             $(this).addClass('selected');
-            //console.log($(this).hasClass('selected'));
-        }
     });
 });
