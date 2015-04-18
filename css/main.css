@@ -5,20 +5,29 @@
   #imagecontainer img {
     flex-grow: 1;
     flex-shrink: 1;
-    cursor: pointer;
     margin: 10px; }
 
 .selected {
   opacity: 0.5;
-  background-image: url(../img/favourite.png); }
+  background-image: url(../img/favourite.png);
+  transition: all 0.2s ease-in-out 0.2s; }
 
 body {
   font-family: 'Open Sans'; }
+  @media all and (max-width: 500px) {
+    body {
+      text-align: center; } }
+
+img {
+  max-width: 100%; }
 
 p {
   margin-top: 0;
   margin-left: 10px;
   color: #666; }
+  @media all and (max-width: 500px) {
+    p {
+      display: none; } }
 
 h1 {
   margin-bottom: 0;
@@ -29,3 +38,9 @@ h1 {
 
 .pink {
   color: #ff0084; }
+
+.underline {
+  text-decoration: underline; }
+
+.pointer {
+  cursor: pointer; }

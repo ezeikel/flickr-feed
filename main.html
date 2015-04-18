@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <title>flickr feed - Ezeikel Pemberton</title>
     <link href="css/main.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700,800" rel="stylesheet" type="text/css">
   </head>
   <body>
     <h1> <span class="blue">flick</span><span class="pink">r </span>feed</h1>
-    <p>Click on an image to select it as a favourite.</p>
+    <p> <span class="underline pointer">Click</span> on an image to select it as a favourite.</p>
     <div id="imagecontainer"></div>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
@@ -14,9 +16,6 @@
       //(function () {
         function cb(data) {
             // use returned data
-            //console.log(data);
-      
-            //console.log('length: ' + data.items.length);
       
             for (var i =0; i<data.items.length; i++) {
                 var item = data.items[i];
@@ -24,36 +23,12 @@
                 var imgurl = item.media.m;
                 img.setAttribute("src", ""+imgurl);
                 img.setAttribute("data-id", i);
-                img.className = "image";
+                img.className = "image pointer";
       
-                //div.appendChild(title);
-                //div.appendChild(img);
                 var container = document.getElementById('imagecontainer');
                 container.appendChild(img);
             }
         }
-      
-        $(window).load(function(){
-            $('.image').on('click', function() {
-                $(this).toggleClass('selected');
-                $('.image').each(function(){
-                    var url = $(this).attr('src');
-                    var selected = $(this).hasClass('selected');
-                    $.cookie(url, selected);
-                });
-            });
-            $('.image').each(function(){
-                var url = $(this).attr('src');
-                var cookieValue = $.cookie(url); // => "value"
-                if (cookieValue == 'true') {
-                    //console.log('IT WAS TRUE!');
-                    $(this).addClass('selected');
-                    //console.log($(this).hasClass('selected'));
-                }
-            });
-        });
-      
-        //cb({title:'hello'});
       
           var tags = 'london';
           var script = document.createElement('script');
@@ -61,5 +36,6 @@
           document.head.appendChild(script);
           //})();
     </script>
+    <script src="js/main.js"></script>
   </body>
 </html>

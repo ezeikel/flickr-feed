@@ -1,6 +1,8 @@
 doctype html
 html
     head
+        meta(charset='utf-8')
+        title flickr feed - Ezeikel Pemberton
         link(href='css/main.css',rel='stylesheet')
         link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700,800', rel='stylesheet', type='text/css')
 
@@ -11,7 +13,10 @@ html
             span.pink
               | r 
             | feed
-        p Click on an image to select it as a favourite.
+        p 
+            span.underline.pointer
+                | Click
+            |  on an image to select it as a favourite.
         #imagecontainer
         script(src='js/jquery-1.11.2.min.js')
         script(src='js/jquery.cookie.js')
@@ -19,9 +24,6 @@ html
           //(function () {
             function cb(data) {
                 // use returned data
-                //console.log(data);
-
-                //console.log('length: ' + data.items.length);
 
                 for (var i =0; i<data.items.length; i++) {
                     var item = data.items[i];
@@ -29,39 +31,16 @@ html
                     var imgurl = item.media.m;
                     img.setAttribute("src", ""+imgurl);
                     img.setAttribute("data-id", i);
-                    img.className = "image";
+                    img.className = "image pointer";
 
-                    //div.appendChild(title);
-                    //div.appendChild(img);
                     var container = document.getElementById('imagecontainer');
                     container.appendChild(img);
                 }
             }
-
-            $(window).load(function(){
-                $('.image').on('click', function() {
-                    $(this).toggleClass('selected');
-                    $('.image').each(function(){
-                        var url = $(this).attr('src');
-                        var selected = $(this).hasClass('selected');
-                        $.cookie(url, selected);
-                    });
-                });
-                $('.image').each(function(){
-                    var url = $(this).attr('src');
-                    var cookieValue = $.cookie(url); // => "value"
-                    if (cookieValue == 'true') {
-                        //console.log('IT WAS TRUE!');
-                        $(this).addClass('selected');
-                        //console.log($(this).hasClass('selected'));
-                    }
-                });
-            });
-
-            //cb({title:'hello'});
 
               var tags = 'london';
               var script = document.createElement('script');
               script.src =  'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags;
               document.head.appendChild(script);
               //})();
+        script(src='js/main.js')
