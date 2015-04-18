@@ -1,19 +1,5 @@
 *
     box-sizing: border-box
-
-#imagecontainer
-    display:flex
-    flex-direction:row
-    flex-wrap:wrap
-    //align-items:center
-    img
-        flex-grow: 1
-        flex-shrink: 1
-        margin: 10px
-        
-.selected
-    opacity: 0.5
-    transition: opacity 0.2s ease-in-out 0.2s
     
 body
     font-family:'Open Sans'
@@ -33,6 +19,20 @@ p
 h1
     margin-bottom: 0
     margin-left: 10px
+
+#imagecontainer
+    display:flex
+    flex-direction:row
+    flex-wrap:wrap
+    //align-items:center
+    img
+        flex-grow: 1
+        flex-shrink: 1
+        margin: 10px
+        transition: opacity 0.2s ease-in-out 0.2s
+        
+.selected
+    opacity: 0.5
 
 .blue    
     color: #0063dc

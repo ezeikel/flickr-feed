@@ -1,29 +1,6 @@
 * {
   box-sizing: border-box; }
 
-#imagecontainer {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
-  #imagecontainer img {
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -webkit-flex-shrink: 1;
-    -ms-flex-negative: 1;
-    flex-shrink: 1;
-    margin: 10px; }
-
-.selected {
-  opacity: 0.5;
-  transition: opacity 0.2s ease-in-out 0.2s; }
-
 body {
   font-family: 'Open Sans'; }
   @media all and (max-width: 500px) {
@@ -44,6 +21,29 @@ p {
 h1 {
   margin-bottom: 0;
   margin-left: 10px; }
+
+#imagecontainer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  #imagecontainer img {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    margin: 10px;
+    transition: opacity 0.2s ease-in-out 0.2s; }
+
+.selected {
+  opacity: 0.5; }
 
 .blue {
   color: #0063dc; }

@@ -30,6 +30,7 @@ gulp.task('templates', function() {
     .pipe(gulp.dest('./'))
 });
 
+// Add Vendor Prefixes for CSS
 gulp.task('autoprefix', function () {
     return gulp.src('css/*.css')
         .pipe(autoprefixer({
