@@ -1,11 +1,10 @@
 doctype html
-html
+html(lang='en')
     head
         meta(charset='utf-8')
         title flickr feed - Ezeikel Pemberton
-        link(href='css/main.css',rel='stylesheet')
         link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700,800', rel='stylesheet', type='text/css')
-
+        link(href='css/main.css',rel='stylesheet')
     body
         h1 
             span.blue
@@ -25,12 +24,12 @@ html
             function cb(data) {
                 // use returned data
 
-                for (var i =0; i<data.items.length; i++) {
+                for (var i=0; i<data.items.length; i++) {
                     var item = data.items[i];
                     var img = document.createElement('img');
                     var imgurl = item.media.m;
-                    img.setAttribute("src", ""+imgurl);
-                    img.className = "image pointer";
+                    img.setAttribute('src', imgurl);
+                    img.className = 'image pointer';
                     var container = document.getElementById('imagecontainer');
                     container.appendChild(img);
                 }

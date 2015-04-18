@@ -22,7 +22,7 @@ gulp.task('sass', function() {
 // Compile Jade
 gulp.task('templates', function() {
   var YOUR_LOCALS = {};
-  gulp.src('./*.jade')
+  gulp.src('jade/*.jade')
     .pipe(jade({
       locals: YOUR_LOCALS,
       pretty: true
@@ -42,7 +42,7 @@ gulp.task('autoprefix', function () {
 // Watch files for changes
 gulp.task('watch', function() {
     gulp.watch('sass/*.sass', ['sass']);
-    gulp.watch('./*.jade', ['templates']);
+    gulp.watch('jade/*.jade', ['templates']);
 });
 
 

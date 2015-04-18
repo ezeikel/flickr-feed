@@ -22,11 +22,10 @@
 
 .selected {
   opacity: 0.5;
-  transition: all 0.2s ease-in-out 0.2s; }
+  transition: opacity 0.2s ease-in-out 0.2s; }
 
 body {
-  font-family: 'Open Sans';
-  transition: all 0.2s ease-in-out 0.2s; }
+  font-family: 'Open Sans'; }
   @media all and (max-width: 500px) {
     body {
       text-align: center; } }
