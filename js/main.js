@@ -1,5 +1,5 @@
 // Event handler for when all elements have loaded
-$(window).load(function(){
+$(window).on('load', function(){
     // Event handler for when a user clicks on an image
     $('.image').on('click', function() {
         $(this).toggleClass('selected');
@@ -9,9 +9,9 @@ $(window).load(function(){
             $.cookie(url, selected);
         });
     });
-    // Loops through each image on the page and checks browser cookies 
+    // Loops through each image on the page and checks browser cookies
     // to see if selected class should be applied
-    $('.image').each(function(){
+    $('.image').each(function() {
         var url = $(this).attr('src');
         var cookieValue = $.cookie(url);
         if (cookieValue == 'true')
