@@ -4,7 +4,7 @@ var gulp = require('gulp');
 
 // Include plugins
 var sass = require('gulp-sass');
-var jade = require('gulp-jade');
+var pug = require('gulp-pug');
 var autoprefixer = require('gulp-autoprefixer');
 
 
@@ -23,7 +23,7 @@ gulp.task('sass', function() {
 gulp.task('templates', function() {
   var YOUR_LOCALS = {};
   gulp.src('jade/*.jade')
-    .pipe(jade({
+    .pipe(pug({
       locals: YOUR_LOCALS,
       pretty: true
     }))
