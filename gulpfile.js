@@ -19,10 +19,10 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('css'));
 });
 
-// Compile Jade
+// Compile Pug
 gulp.task('templates', function() {
   var YOUR_LOCALS = {};
-  gulp.src('jade/*.jade')
+  gulp.src('pug/*.pug')
     .pipe(pug({
       locals: YOUR_LOCALS,
       pretty: true
@@ -43,7 +43,7 @@ gulp.task('autoprefix', function () {
 // Watch files for changes
 gulp.task('watch', function() {
     gulp.watch('sass/*.sass', ['sass']);
-    gulp.watch('jade/*.jade', ['templates']);
+    gulp.watch('pug/*.pug', ['templates']);
 });
 
 
