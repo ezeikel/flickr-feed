@@ -27,8 +27,8 @@ window.addEventListener('load', function () {
   var images = document.querySelectorAll('.image');
 });
 
-var test = 'es6 variable';
+let test = 'es6 variable';
 
-var arrow = function arrow() {
+var arrow = () => {
   return true;
-};
+}
