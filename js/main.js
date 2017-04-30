@@ -1,34 +1,45 @@
 'use strict';
 
-// Event handler for when all elements have loaded
-// $(window).on('load', function(){
-//     // Event handler for when a user clicks on an image
-//     $('.image').on('click', function() {
-//         $(this).toggleClass('selected');
-//         $('.image').each(function(){
-//             var url = $(this).attr('src');
-//             var selected = $(this).hasClass('selected');
-//             $.cookie(url, selected);
-//         });
-//     });
-//     // Loops through each image on the page and checks browser cookies
-//     // to see if selected class should be applied
-//     $('.image').each(function() {
-//         var url = $(this).attr('src');
-//         var cookieValue = $.cookie(url);
-//         if (cookieValue == 'true')
-//             $(this).addClass('selected');
-//     });
-// });
-
 window.addEventListener('load', function () {
-  // Event handler for when a user clicks on an image
-  //debugger;
+
   var images = document.querySelectorAll('.image');
+  var imgArray = Array.from(images);
+
+  var setLocalStorage = function setLocalStorage(src, selectedState) {
+    localStorage.setItem(src, selectedState);
+  };
+
+  var checkLocalStorage = function checkLocalStorage(src) {
+    return localStorage.getItem(src);
+  };
+
+  var checkImageDetails = function checkImageDetails(pageReload) {
+    if (pageReload) {
+      imgArray.forEach(function (img) {
+        var imgSrc = img.getAttribute('src');
+        var selected = checkLocalStorage(imgSrc);
+        if (selected === 'true') {
+          img.classList.add('selected');
+        }
+      });
+    }
+  };
+
+  imgArray.forEach(function (img) {
+    var imgSrc = img.getAttribute('src');
+
+    img.addEventListener('click', function (event) {
+
+      var elem = event.target;
+      elem.classList.toggle('selected');
+
+      if (elem.classList.contains('selected')) {
+        setLocalStorage(imgSrc, 'true');
+      } else {
+        setLocalStorage(imgSrc, 'false');
+      }
+    });
+  });
+
+  checkImageDetails(true);
 });
-
-var test = 'es6 variable';
-
-var arrow = function arrow() {
-  return true;
-};

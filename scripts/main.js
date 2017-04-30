@@ -1,34 +1,46 @@
 'use strict';
 
-// Event handler for when all elements have loaded
-// $(window).on('load', function(){
-//     // Event handler for when a user clicks on an image
-//     $('.image').on('click', function() {
-//         $(this).toggleClass('selected');
-//         $('.image').each(function(){
-//             var url = $(this).attr('src');
-//             var selected = $(this).hasClass('selected');
-//             $.cookie(url, selected);
-//         });
-//     });
-//     // Loops through each image on the page and checks browser cookies
-//     // to see if selected class should be applied
-//     $('.image').each(function() {
-//         var url = $(this).attr('src');
-//         var cookieValue = $.cookie(url);
-//         if (cookieValue == 'true')
-//             $(this).addClass('selected');
-//     });
-// });
+window.addEventListener('load', () => {
 
-window.addEventListener('load', function () {
-  // Event handler for when a user clicks on an image
-  //debugger;
-  var images = document.querySelectorAll('.image');
+  let images = document.querySelectorAll('.image');
+  let imgArray = Array.from(images);
+
+  let setLocalStorage = (src, selectedState) => {
+    localStorage.setItem(src, selectedState);
+  }
+
+  let checkLocalStorage = (src) => {
+    return localStorage.getItem(src);
+  }
+
+  let checkImageDetails = (pageReload) => {
+    if (pageReload) {
+      imgArray.forEach(img => {
+        let imgSrc = img.getAttribute('src');
+        let selected = checkLocalStorage(imgSrc);
+        if (selected === 'true') {
+          img.classList.add('selected');
+        }
+      });
+    }
+  }
+
+  imgArray.forEach(img => {
+    let imgSrc = img.getAttribute('src');
+
+    img.addEventListener('click', event => {
+
+      let elem = event.target;
+      elem.classList.toggle('selected');
+
+      if(elem.classList.contains('selected')) {
+        setLocalStorage(imgSrc, 'true');
+      } else {
+        setLocalStorage(imgSrc, 'false');
+      }
+    });
+  });
+
+  checkImageDetails(true);
+
 });
-
-let test = 'es6 variable';
-
-var arrow = () => {
-  return true;
-}
