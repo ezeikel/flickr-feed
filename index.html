@@ -9,29 +9,27 @@
   <body>
     <h1><span class="blue">flick</span><span class="pink">r</span>feed</h1>
     <p><span class="underline pointer bold">Click</span> on an image below to select it as a favourite.</p>
-    <div id="imagecontainer"></div>
+    <div class="imagecontainer"></div>
     <script type="text/javascript">
-      //(function () {
-        function cb(data) {
-            // use returned data
+      function cb(data) {
+          // use returned data
       
-            for (var i=0; i<data.items.length; i++) {
-                var item = data.items[i];
-                var img = document.createElement('img');
-                var imgurl = item.media.m;
-                img.setAttribute('src', imgurl);
-                img.className = 'image pointer';
-                var container = document.getElementById('imagecontainer');
-                container.appendChild(img);
-            }
-        }
+          for (var i=0; i<data.items.length; i++) {
+              var item = data.items[i];
+              var img = document.createElement('img');
+              var imgurl = item.media.m;
+              img.setAttribute('src', imgurl);
+              img.className = 'image pointer';
+              var container = document.querySelector('.imagecontainer');
+              container.appendChild(img);
+          }
+      }
       
-          var tags = 'london';
-          var script = document.createElement('script');
-          script.src =  'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags;
-          document.body.appendChild(script);
-          //})();
+        var tags = 'anthony joshua';
+        var script = document.createElement('script');
+        script.src = 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb&tags=' + tags;
+        document.body.appendChild(script);
     </script>
-    <script src="js/main.js"></script>
+    <script src="js/main-min.js"></script>
   </body>
 </html>
