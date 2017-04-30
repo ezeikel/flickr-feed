@@ -49,7 +49,7 @@ gulp.task('babel', function() {
     .pipe(babel({
       presets: ['es2015']
     }))
-    .pipe(minify())
+    //.pipe(minify())
     .pipe(gulp.dest('js'));
 });
 
