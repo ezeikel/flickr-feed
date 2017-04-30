@@ -7,6 +7,8 @@ var sass = require('gulp-sass');
 var pug = require('gulp-pug');
 var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
+var cssnano = require('gulp-cssnano');
+var minify = require('gulp-minify');
 var browserSync = require('browser-sync').create();
 
 // Static server
@@ -25,6 +27,7 @@ gulp.task('sass', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
+        .pipe(cssnano())
         .pipe(gulp.dest('css'))
         .pipe(browserSync.stream());
 });
@@ -46,17 +49,8 @@ gulp.task('babel', function() {
     .pipe(babel({
       presets: ['es2015']
     }))
+    .pipe(minify())
     .pipe(gulp.dest('js'));
-});
-
-// Add Vendor Prefixes for CSS
-gulp.task('autoprefix', function () {
-    return gulp.src('css/*.css')
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(gulp.dest('css'));
 });
 
 // Watch files for changes
